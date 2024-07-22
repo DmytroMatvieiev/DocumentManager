@@ -111,4 +111,13 @@ public class DocumentManagerTest {
         Optional<DocumentManager.Document> documentOp = documentManager.findById(book_1.getId());
         assertThat(documentOp).isPresent().hasValue(book_1);
     }
+
+    @Test
+    void save_whenBookSaved_thenCorrect(){
+        DocumentManager.Document expected_doc = documentManager.save(new DocumentManager.Document("", "title", "content",
+                new DocumentManager.Author("d6adfb43-43cc-4f3c-86e9-18bb795821b9", "name"), Instant.now()));
+
+        Optional<DocumentManager.Document> found_doc = documentManager.findById(expected_doc.getId());
+        assertThat(found_doc).isPresent().hasValue(expected_doc);
+    }
 }
