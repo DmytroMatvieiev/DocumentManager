@@ -44,7 +44,7 @@ public class DocumentManager {
     }
 
     private boolean isNew(Document document) {
-        return document.getId().isEmpty();
+        return document.getId() == null || document.getId().isEmpty();
     }
 
     /**
